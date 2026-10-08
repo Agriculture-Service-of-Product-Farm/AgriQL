@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AgriQL</title>
-  <meta name="description" content="AgriQL is an agriculture-native database language. Measurements keep their units, and the record stays in one file.">
+  <meta name="description" content="AgriQL is an agriculture-native database language. Measurements keep their units, and the record for a season stays in one file.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     :root {
@@ -16,7 +16,7 @@
       --line: #d5ddd6;
     }
     * { box-sizing: border-box; }
-    html { background: var(--paper); }
+    html { background: var(--paper); scroll-behavior: smooth; }
     body {
       margin: 0;
       color: var(--ink);
@@ -36,50 +36,67 @@
       margin: 0 auto;
     }
     main {
-      width: min(40rem, calc(100% - 2.5rem));
+      width: min(42rem, calc(100% - 2.5rem));
       margin: 0 auto;
-      padding: 2.25rem 0 4rem;
+      padding: 2rem 0 4rem;
     }
     .org {
-      margin: 0 0 0.6rem;
+      margin: 0 0 0.55rem;
       color: var(--muted);
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
     h1 {
-      margin: 0 0 0.7rem;
+      margin: 0 0 0.75rem;
       font-family: Palatino, "Palatino Linotype", Georgia, serif;
       font-weight: 500;
-      font-size: 1.7rem;
+      font-size: 1.85rem;
       letter-spacing: -0.02em;
       line-height: 1.25;
     }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.9rem;
+      margin: 1.3rem 0 0;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    nav a {
+      color: var(--ink);
+      font-size: 0.95rem;
+      text-underline-offset: 0.18em;
+    }
     h2 {
-      margin: 2.6rem 0 0.7rem;
+      margin: 2.7rem 0 0.7rem;
       font-size: 0.78rem;
       font-weight: 650;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    p { margin: 0 0 0.9rem; }
-    ul { margin: 0; padding-left: 1.15rem; }
-    li { margin: 0.4rem 0; }
-    .point { margin: 0 0 1.15rem; }
-    .point h3 {
-      margin: 0 0 0.25rem;
+    h3 {
+      margin: 1.15rem 0 0.3rem;
       font-size: 1.05rem;
       font-weight: 650;
     }
+    p { margin: 0 0 0.9rem; }
+    ul, ol { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+    li { margin: 0.4rem 0; }
+    code {
+      font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92em;
+    }
     pre {
-      margin: 0.4rem 0 0;
-      padding: 1rem 1.05rem;
+      margin: 0.35rem 0 1rem;
+      padding: 0.95rem 1rem;
       overflow-x: auto;
       border: 1px solid var(--line);
       background: var(--white);
       color: var(--ink);
       font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       line-height: 1.5;
     }
     a { color: var(--ink); }
@@ -98,54 +115,95 @@
   </header>
   <main>
     <p class="org">Agricultural Service of Product Farm</p>
-    <h1>Agriculture-native database language</h1>
+    <h1>Agriculture-native database language 1.0</h1>
     <p>AgriQL stores the measurements for a farm, a field trial, or a season, and it is the language used to query them. The record is one file, ending in <code>.aqdb</code>.</p>
+    <nav>
+      <a href="#why">Why it matters</a>
+      <a href="#differs">How it differs</a>
+      <a href="#do">What you can do</a>
+      <a href="#query">A query</a>
+      <a href="#clients">Clients</a>
+      <a href="#limits">Limits</a>
+    </nav>
 
-    <h2>Why it matters</h2>
-    <div class="point">
-      <h3>A measurement is not a plain number</h3>
-      <p>Twenty-five can mean percent soil moisture, millimetres of rain, or a temperature. In a spreadsheet those values look the same. AgriQL keeps the unit with the value and rejects a sum of quantities that do not share one.</p>
-    </div>
-    <div class="point">
-      <h3>The season stays in one file</h3>
-      <p>Soil readings, crop notes, water, and weather belong together. One database file can be copied, archived, and queried later. It does not depend on a pile of workbooks with slightly different column names.</p>
-    </div>
-    <div class="point">
-      <h3>The record is not the analysis tool</h3>
-      <p>People already work in Excel, Python, and R. Those tools can receive a result. They are not where the measurements are kept. The database remains the record.</p>
-    </div>
+    <h2 id="why">Why it matters</h2>
+    <h3>A measurement is not a plain number</h3>
+    <p>Twenty-five can mean percent soil moisture, millimetres of rain, or a temperature. In a spreadsheet those values look the same. AgriQL keeps the unit with the value and rejects a sum of quantities that do not share one. A length is not added to a mass. Millimetres and metres can be added, because they are both length.</p>
+    <h3>The season stays in one file</h3>
+    <p>Soil readings, crop notes, water, and weather belong together. One database file can be copied, handed to a colleague, and queried months later. The archive does not depend on several workbooks whose column names have drifted apart.</p>
+    <h3>The record is not the analysis tool</h3>
+    <p>People already work in Excel, Python, and R. Those tools can receive a result. They are not where the measurements are kept. If a notebook is lost, the database file is still the record.</p>
+    <h3>An imported table remembers its source</h3>
+    <p>When a CSV, JSON, or Excel file is imported, AgriQL records where that table came from. A later reader can see that the rows were not typed in by hand.</p>
 
-    <h2>How it differs</h2>
+    <h2 id="differs">How it differs</h2>
     <p>A general-purpose database will store farm tables. It treats a column as numbers or text, and it is meant for any application. AgriQL is narrower, on purpose.</p>
     <ul>
       <li><strong>Subject.</strong> AgriQL is for agricultural measurements: soil, crop, water, weather, and sensor observations. A general-purpose database is for whatever the application needs.</li>
-      <li><strong>Units.</strong> AgriQL refuses to add a length to a mass. A general-purpose database stores the numbers and leaves that check to the application.</li>
-      <li><strong>The file.</strong> An AgriQL database is one <code>.aqdb</code> file. A general-purpose system is often a server you administer, or a file in a format that knows nothing about a field or a season.</li>
-      <li><strong>Exchange.</strong> CSV, JSON, and Excel move in and out, because that is how many farms and laboratories already keep data.</li>
+      <li><strong>Units.</strong> AgriQL refuses to add a length to a mass. A general-purpose database stores the numbers and leaves that check to the application, where it is easy to skip.</li>
+      <li><strong>The file.</strong> An AgriQL database is one <code>.aqdb</code> file for a farm or a study. A general-purpose system is often a server you administer, or a file format that knows nothing about a field or a season.</li>
+      <li><strong>Exchange.</strong> CSV, TSV, JSON, and Excel move in and out, because that is how many farms and laboratories already keep data.</li>
       <li><strong>Analysis.</strong> The Python, R, and Arrow clients return rows from a query. They do not become a second copy of the database.</li>
     </ul>
     <p>AgriQL is not a replacement for every database. Use it when the thing you need to trust is an agricultural measurement.</p>
 
-    <h2>A query</h2>
-    <p>You can filter a table and summarise it. This asks for the mean soil moisture of each plant below a threshold.</p>
+    <h2 id="do">What you can do</h2>
+    <ol>
+      <li>Open a database file, or create one for a farm or a trial.</li>
+      <li>Import a table from CSV, TSV, JSON, or Excel.</li>
+      <li>Filter that table and summarise it: count, minimum, maximum, average, and standard deviation.</li>
+      <li>Ask which values are missing, and which numbers sit far from the rest.</li>
+      <li>Ask whether a time series has gaps.</li>
+      <li>Export the table back to CSV, JSON, or Excel.</li>
+      <li>Read the same file from Python or R, or write the rows to an Arrow file for further work.</li>
+    </ol>
+
+    <h2 id="query">A query</h2>
+    <p>Bring in a soil sheet, then ask for the mean moisture of each plant below a threshold. The result can be written back to Excel.</p>
     <pre>IMPORT CSV 'soil.csv' INTO agriculture.soil;
 
 SELECT plant_id, AVG(soil_moisture)
 FROM agriculture.soil
 WHERE soil_moisture < 25
-GROUP BY plant_id;</pre>
+GROUP BY plant_id;
 
-    <h2>Clients</h2>
-    <p>Each client sends a query to AgriQL and returns the rows.</p>
+EXPORT XLSX agriculture.soil TO 'soil.xlsx';</pre>
+    <p>A quality check on the same table reports empty values and unusual numbers:</p>
+    <pre>PROFILE agriculture.soil;</pre>
+
+    <h2 id="clients">Clients</h2>
+    <p>Each client sends a query to AgriQL and returns the rows. Install the client you use. The database file stays AgriQL.</p>
+    <h3><a href="https://github.com/SbruiceS/agriql-python">Python</a></h3>
+    <pre>import agriql
+
+db = agriql.connect("farm.aqdb")
+rows = db.query("""
+    SELECT plant_id, AVG(soil_moisture)
+    FROM agriculture.soil
+    GROUP BY plant_id
+""").to_records()</pre>
+    <p>If pandas or Polars is installed, the same result can be turned into one of those tables. That conversion is optional.</p>
+    <h3><a href="https://github.com/SbruiceS/agriql-r">R</a></h3>
+    <pre>library(agriql)
+
+db <- aqdb_connect("farm.aqdb")
+aqdb_frame(aqdb_query(db, "SHOW SCHEMAS;"))</pre>
+    <h3><a href="https://github.com/SbruiceS/agriql-arrow">Arrow</a></h3>
+    <p>Arrow is for moving a result into an analysis file. It does not open the database.</p>
+    <pre>agriql-arrow write soil.tsv soil.arrows
+agriql-arrow read soil.arrows</pre>
+
+    <h2 id="limits">Limits</h2>
+    <p>These are the present boundaries, not a promise of later work.</p>
     <ul>
-      <li><a href="https://github.com/SbruiceS/agriql-python">Python</a></li>
-      <li><a href="https://github.com/SbruiceS/agriql-r">R</a></li>
-      <li><a href="https://github.com/SbruiceS/agriql-arrow">Arrow</a>, for taking a result into an analysis file</li>
+      <li>A summary query reads one table. It does not join several tables.</li>
+      <li>CSV, TSV, JSON, and Excel are accepted. Parquet, and a spreadsheet that lives only online, are not.</li>
+      <li>Python, R, and Arrow do not contain the database. They talk to AgriQL.</li>
+      <li>AgriQL is under active development. The behaviour above is what you can rely on now.</li>
     </ul>
 
     <footer>
       <p>Sbruice Singh · Agricultural Service of Product Farm</p>
-      <p>AgriQL is under active development.</p>
     </footer>
   </main>
 </body>
