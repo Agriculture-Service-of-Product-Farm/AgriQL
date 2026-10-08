@@ -1,37 +1,119 @@
 ---
 layout: default
 title: AgriQL — agriculture-native database language
-description: AgriQL stores soil, crop, water, and weather measurements in one file and checks their units. Install it on Windows, macOS, Linux, or a server.
+description: Store soil, crop, water, and weather measurements in one AgriQL file, with unit-aware checks. Install on Windows, macOS, Linux, or a server.
 schema: true
+motion: true
 ---
 <section class="wrap hero">
-  <div>
-    <p class="kicker">Agricultural Service of Product Farm</p>
-    <h1>AgriQL</h1>
-    <p class="lede">The database language for agricultural measurements. A season stays in one <code>.aqdb</code> file. A value keeps its unit. Excel, Python, and R receive results. They do not replace the record.</p>
+  <canvas class="particle-field" data-particles aria-hidden="true"></canvas>
+  <div class="hero-grain parallax-layer" data-parallax="0.08" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <p class="kicker"><span class="status-orb" aria-hidden="true"></span> Agricultural Service of Product Farm</p>
+    <h1>Agriculture,<br><span class="hero-title-accent">in its element.</span></h1>
+    <p class="hero-product-name">Meet <strong>AgriQL</strong> — the agriculture-native database language.</p>
+    <p class="lede">Keep soil, crop, water, and weather measurements together in one season file. Units stay attached to values, while Excel, Python, and R work with the results.</p>
     <div class="actions">
       <a class="btn primary" href="{{ '/docs/' | relative_url }}">Read the documentation</a>
       <a class="btn ghost" href="{{ '/docs/install/linux.html' | relative_url }}">Install on Linux</a>
     </div>
+    <div class="hero-metrics" aria-label="AgriQL metrics">
+      <div class="metric-pill">
+        <strong>1 file</strong>
+        <span>for each season</span>
+      </div>
+      <div class="metric-pill">
+        <strong>Unit-aware</strong>
+        <span>measurements with context</span>
+      </div>
+      <div class="metric-pill">
+        <strong>4 formats</strong>
+        <span>CSV, TSV, JSON, Excel</span>
+      </div>
+    </div>
   </div>
-  <img class="hero-art" src="{{ '/assets/field.svg' | relative_url }}" alt="A field divided into plots, with one plot marked and a small stack of records.">
+
+  <div class="hero-visual tilt-card" aria-label="Illustrated AgriQL field data dashboard">
+    <div class="orb orb-one parallax-layer" data-parallax="0.12" aria-hidden="true"></div>
+    <div class="orb orb-two parallax-layer" data-parallax="-0.08" aria-hidden="true"></div>
+    <div class="field-ring ring-one parallax-layer" data-parallax="0.05" aria-hidden="true"></div>
+    <div class="field-ring ring-two parallax-layer" data-parallax="-0.04" aria-hidden="true"></div>
+    <div class="dash-panel panel-surface">
+      <div class="panel-header">
+        <span class="live-dot"></span>
+        <span>field ledger</span>
+      </div>
+      <div class="plot-grid">
+        <span class="cell active"></span>
+        <span class="cell"></span>
+        <span class="cell active"></span>
+        <span class="cell"></span>
+        <span class="cell"></span>
+        <span class="cell active"></span>
+        <span class="cell"></span>
+        <span class="cell active"></span>
+        <span class="cell"></span>
+      </div>
+      <div class="chart-bars">
+        <span style="height: 44%"></span>
+        <span style="height: 68%"></span>
+        <span style="height: 88%"></span>
+        <span style="height: 76%"></span>
+        <span style="height: 96%"></span>
+        <span style="height: 82%"></span>
+      </div>
+      <div class="data-row">
+        <div class="mini-stat">
+          <small>Avg rainfall</small>
+          <strong>25 mm</strong>
+        </div>
+        <div class="mini-stat positive">
+          <small>Soil moisture</small>
+          <strong>62%</strong>
+        </div>
+      </div>
+    </div>
+    <div class="floating-card card-a">
+      <small>soil queue</small>
+      <strong>+14 records</strong>
+    </div>
+    <div class="floating-card card-b">
+      <small>unit check</small>
+      <strong>passed</strong>
+    </div>
+  </div>
 </section>
 
-<img class="wide-art wrap" src="{{ '/assets/measures.svg' | relative_url }}" alt="The number 25 shown as millimetres of rain, percent moisture, and kilograms of fertiliser.">
+<div class="capability-rail" aria-label="AgriQL supports soil, crop, water, and weather measurements">
+  <div class="capability-track" aria-hidden="true">
+    <span>SOIL</span><i></i><span>CROP</span><i></i><span>WATER</span><i></i><span>WEATHER</span><i></i><span>FIELD DATA, IN CONTEXT</span><i></i>
+    <span>SOIL</span><i></i><span>CROP</span><i></i><span>WATER</span><i></i><span>WEATHER</span><i></i><span>FIELD DATA, IN CONTEXT</span><i></i>
+  </div>
+</div>
+
+<section class="wrap spotlight" data-reveal>
+  <div class="spotlight-art">
+    <img class="wide-art" src="{{ '/assets/measures.svg' | relative_url }}" alt="A measurement value of 25 shown with distinct units for rainfall, moisture, and fertiliser.">
+  </div>
+  <figure class="terrain-card parallax-layer" data-parallax="0.035">
+    <img src="{{ '/assets/field-terrain.svg' | relative_url }}" alt="Isometric green field plots with crop rows and soil layers." loading="lazy" width="720" height="560">
+    <figcaption>One record. Every field in context.</figcaption>
+  </figure>
+</section>
 
 <section class="band">
-  <div class="wrap">
-    <article>
+  <div class="wrap feature-band">
+    <article data-reveal>
       <span class="idx">01</span>
       <h2>One file for the season</h2>
       <p>Soil, crop, water, and weather for a farm or a trial stay together. Copy the file. Archive it. Query it later.</p>
     </article>
-    <article>
+    <article data-reveal>
       <span class="idx">02</span>
       <h2>Units are checked</h2>
       <p>A length is not added to a mass. Millimetres and metres can be added, because both are length.</p>
     </article>
-    <article>
+    <article data-reveal>
       <span class="idx">03</span>
       <h2>Analysis stays outside</h2>
       <p>Export to Excel, or read the same file from Python, R, or Arrow. The database remains the record.</p>
@@ -39,7 +121,7 @@ schema: true
   </div>
 </section>
 
-<section class="wrap section" id="install">
+<section class="wrap section" id="install" data-reveal>
   <p class="kicker">Install</p>
   <h2>Choose the system you run.</h2>
   <p>AgriQL 3.10.1 is built from source. Packages for apt, dnf, Homebrew, and WinGet are not in those public catalogs yet.</p>
@@ -51,7 +133,7 @@ schema: true
   </div>
 </section>
 
-<section class="wrap section" id="differs">
+<section class="wrap section" id="differs" data-reveal>
   <p class="kicker">Product</p>
   <h2>Built for the measurement, not for every application.</h2>
   <div class="split">
@@ -78,7 +160,7 @@ schema: true
   </div>
 </section>
 
-<section class="wrap section">
+<section class="wrap section" data-reveal>
   <p class="kicker">Documentation</p>
   <h2>Start with the task, not the whole manual.</h2>
   <div class="doc-cards three">
@@ -88,7 +170,7 @@ schema: true
   </div>
 </section>
 
-<section class="wrap" id="limits">
+<section class="wrap" id="limits" data-reveal>
   <div class="limits">
     <p class="kicker">Limits</p>
     <h2>What not to expect.</h2>

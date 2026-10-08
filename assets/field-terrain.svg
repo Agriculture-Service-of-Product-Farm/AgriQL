@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="360" y1="0" x2="360" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f9ef"/>
+      <stop offset="1" stop-color="#d6e9d3"/>
+    </linearGradient>
+    <linearGradient id="field" x1="176" y1="172" x2="546" y2="465" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8acb57"/>
+      <stop offset=".52" stop-color="#328e52"/>
+      <stop offset="1" stop-color="#0b5149"/>
+    </linearGradient>
+    <linearGradient id="soil" x1="360" y1="390" x2="360" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a96b42"/>
+      <stop offset="1" stop-color="#4b4633"/>
+    </linearGradient>
+    <linearGradient id="light" x1="197" y1="126" x2="503" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eaffd8" stop-opacity=".86"/>
+      <stop offset="1" stop-color="#b7f38d" stop-opacity=".08"/>
+    </linearGradient>
+    <filter id="shadow" x="74" y="114" width="572" height="414" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <pattern id="rows" width="22" height="22" patternTransform="matrix(.87 -.5 .87 .5 0 0)" patternUnits="userSpaceOnUse">
+      <path d="M0 0v22" stroke="#e6ffbc" stroke-opacity=".42" stroke-width="3"/>
+    </pattern>
+    <pattern id="soil-lines" width="42" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 8c10-6 20 6 42 0M0 18c12-6 20 6 42 0" stroke="#f2c496" stroke-opacity=".3" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="720" height="560" rx="28" fill="url(#sky)"/>
+  <circle cx="562" cy="104" r="48" fill="#fff8d8" fill-opacity=".82"/>
+  <circle cx="562" cy="104" r="68" stroke="#8bbd69" stroke-opacity=".18"/>
+  <path d="M0 220c86-49 147-44 224-1 78 43 132 38 211-3 87-45 176-46 285-1v345H0V220Z" fill="#d6e9d3"/>
+  <ellipse cx="361" cy="370" rx="253" ry="116" fill="#133e31" fill-opacity=".25" filter="url(#shadow)"/>
+  <path d="m142 216 220-127 220 127-220 127-220-127Z" fill="url(#field)" stroke="#f4fff0" stroke-opacity=".75" stroke-width="2"/>
+  <path d="m142 216 220 127v132L142 344V216Z" fill="url(#soil)"/>
+  <path d="m362 343 220-127v128L362 475V343Z" fill="#704d34"/>
+  <path d="m142 216 220 127v132L142 344V216Z" fill="url(#soil-lines)" opacity=".9"/>
+  <path d="m362 343 220-127v128L362 475V343Z" fill="url(#soil-lines)" opacity=".72"/>
+  <path d="m142 216 220-127 220 127-220 127-220-127Z" fill="url(#rows)" opacity=".9"/>
+  <path d="m142 216 220-127 220 127-220 127-220-127Z" fill="url(#light)"/>
+  <path d="m142 216 220 127m220-127L362 343m-110-64 220-127m-110 255 220-127" stroke="#efffe4" stroke-opacity=".5" stroke-width="2"/>
+  <path d="m362 89 220 127v128M142 216v128l220 131" stroke="#f7fff1" stroke-opacity=".45" stroke-width="2"/>
+  <path d="M223 194c16-23 40-35 65-33m158 59c19-16 42-22 63-18" stroke="#efffda" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+  <path d="M280 208c13-18 32-27 52-26m-54 38c13-18 32-27 52-26" stroke="#f4ffe7" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+  <g>
+    <circle cx="362" cy="216" r="31" fill="#0b2e2d" fill-opacity=".14"/>
+    <circle cx="362" cy="216" r="23" fill="#f9fff4" fill-opacity=".93"/>
+    <circle cx="362" cy="216" r="16" fill="#2f9753"/>
+    <path d="M362 226v-20m0 11c-8-1-11-6-11-12 7 0 11 4 11 12Zm0-5c8-1 11-6 11-12-7 0-11 4-11 12Z" stroke="#f5ffe9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M96 455c68-20 103-8 143 7m287-2c34-15 67-14 97-5" stroke="#5d9566" stroke-opacity=".36" stroke-width="2" stroke-linecap="round"/>
+</svg>
