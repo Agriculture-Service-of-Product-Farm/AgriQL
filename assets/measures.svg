@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" fill="none">
+  <rect width="560" height="220" rx="24" fill="#054746"/>
+  <g font-family="Georgia, serif" fill="#f6f3ea">
+    <text x="36" y="78" font-size="28">25 mm</text>
+    <text x="210" y="78" font-size="28">25 %</text>
+    <text x="384" y="78" font-size="28">25 kg</text>
+  </g>
+  <path d="M36 108h120M210 108h110M384 108h120" stroke="#58a028" stroke-width="3" stroke-linecap="round"/>
+  <text x="36" y="156" fill="#c9ddd4" font-family="Georgia, serif" font-size="16">rain</text>
+  <text x="210" y="156" fill="#c9ddd4" font-family="Georgia, serif" font-size="16">moisture</text>
+  <text x="384" y="156" fill="#c9ddd4" font-family="Georgia, serif" font-size="16">fertiliser</text>
+</svg>
