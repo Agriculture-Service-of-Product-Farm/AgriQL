@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgriQL</title>
+  <meta name="description" content="AgriQL is a database for agricultural measurements and the language used to query them.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #0c100e;
+      --paper: #e6e9e1;
+      --sage: #8fa38c;
+      --muted: #8a9184;
+      --line: #2a3128;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--ink); }
+    body {
+      margin: 0;
+      color: var(--paper);
+      background: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    main {
+      width: min(40rem, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+    header { border-top: 2px solid var(--sage); padding-top: 1.5rem; }
+    .org {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0.4rem 0 0.8rem;
+      font-family: Palatino, "Palatino Linotype", "Iowan Old Style", Georgia, serif;
+      font-weight: 500;
+      font-size: 3rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .lede { margin: 0; max-width: 36rem; font-size: 1.2rem; }
+    section { margin-top: 2.75rem; }
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    p { margin: 0 0 0.9rem; }
+    ul { margin: 0; padding-left: 1.1rem; }
+    li { margin: 0.35rem 0; }
+    pre {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: #101410;
+      color: var(--paper);
+      font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    a { color: var(--paper); }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="org">Agricultural Service of Product Farm</p>
+      <h1>AgriQL</h1>
+      <p class="lede">A database for agricultural measurements, and the language used to query them.</p>
+    </header>
+
+    <section>
+      <h2>Records</h2>
+      <p>A database is one file, ending in <code>.aqdb</code>. It holds the tables for a farm, a trial, or a season: soil readings, crop notes, weather, and other observations.</p>
+      <p>A value keeps its unit. A length is not added to a mass.</p>
+    </section>
+
+    <section>
+      <h2>Queries</h2>
+      <p>You ask for the rows you need, or for a summary of one table. Files you already keep as CSV, JSON, or Excel can be imported and written back out.</p>
+      <pre>IMPORT CSV 'soil.csv' INTO agriculture.soil;
+
+SELECT plant_id, AVG(soil_moisture)
+FROM agriculture.soil
+WHERE soil_moisture < 25
+GROUP BY plant_id;</pre>
+    </section>
+
+    <section>
+      <h2>Analysis</h2>
+      <p>Python, R, and Arrow are clients. They send a query to AgriQL and return the rows. They are not separate databases. Spreadsheets and analysis tools stay outside the file.</p>
+      <ul>
+        <li><a href="https://github.com/SbruiceS/agriql-python">Python</a></li>
+        <li><a href="https://github.com/SbruiceS/agriql-r">R</a></li>
+        <li><a href="https://github.com/SbruiceS/agriql-arrow">Arrow</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>AgriQL is under active development.</p>
+    </footer>
+  </main>
+</body>
+</html>
