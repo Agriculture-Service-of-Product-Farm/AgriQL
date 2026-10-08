@@ -1,0 +1,8 @@
+title: AgriQL
+description: AgriQL is an agriculture-native database language. Measurements keep their units, and a season stays in one file.
+url: https://agriculture-service-of-product-farm.github.io
+baseurl: /AgriQL
+markdown: kramdown
+exclude:
+  - README.md
+  - vendor

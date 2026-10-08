@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/og.jpg' | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+  {% if page.schema %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Agricultural Service of Product Farm",
+        "url": "{{ '/' | absolute_url }}"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "AgriQL",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Database",
+        "operatingSystem": "Windows, macOS, Linux",
+        "softwareVersion": "3.10.1",
+        "description": "{{ site.description }}",
+        "url": "{{ '/' | absolute_url }}",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@type": "Organization", "name": "Agricultural Service of Product Farm" }
+      }
+    ]
+  }
+  </script>
+  {% endif %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img src="{{ '/agriql-logo.png' | relative_url }}" alt="AgriQL">
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Product</a>
+      <a href="{{ '/docs/' | relative_url }}">Documentation</a>
+      <a href="{{ '/docs/install/linux.html' | relative_url }}">Linux</a>
+      <a href="{{ '/docs/install/windows.html' | relative_url }}">Windows</a>
+      <a href="{{ '/docs/install/macos.html' | relative_url }}">macOS</a>
+      <a href="{{ '/docs/install/server.html' | relative_url }}">Server</a>
+    </nav>
+  </header>
+  {{ content }}
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <strong>AgriQL</strong>
+        <p>Agriculture-native database language. Agricultural Service of Product Farm.</p>
+      </div>
+      <div>
+        <strong>Install</strong>
+        <p><a href="{{ '/docs/install/windows.html' | relative_url }}">Windows</a></p>
+        <p><a href="{{ '/docs/install/macos.html' | relative_url }}">macOS</a></p>
+        <p><a href="{{ '/docs/install/linux.html' | relative_url }}">Linux</a></p>
+        <p><a href="{{ '/docs/install/server.html' | relative_url }}">Server</a></p>
+      </div>
+      <div>
+        <strong>Documentation</strong>
+        <p><a href="{{ '/docs/' | relative_url }}">Overview</a></p>
+        <p><a href="{{ '/docs/getting-started.html' | relative_url }}">Getting started</a></p>
+        <p><a href="{{ '/docs/clients.html' | relative_url }}">Python, R, and Arrow</a></p>
+      </div>
+    </div>
+    <div class="wrap footer-end">
+      <p>Sbruice Singh · Agricultural Service of Product Farm</p>
+    </div>
+  </footer>
+</body>
+</html>

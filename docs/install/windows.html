@@ -1,0 +1,33 @@
+---
+layout: docs
+title: Install AgriQL on Windows
+description: Install AgriQL 3.10.1 on 64-bit Windows from source. WinGet does not list AgriQL yet.
+crumb: Windows
+---
+<h1>Install AgriQL on Windows</h1>
+<p>This installs the <code>agriql</code> command on 64-bit Windows 10 or Windows 11. WinGet does not list AgriQL yet. Do not use an identifier that has not been published.</p>
+<h2>What you need</h2>
+<ul>
+  <li>A 64-bit Windows system.</li>
+  <li>Git for Windows.</li>
+  <li>Rust, installed with <a href="https://rustup.rs">rustup</a>. Accept the default Visual Studio build tools when rustup asks. AgriQL needs that linker.</li>
+</ul>
+<h2>Build</h2>
+<p>Open PowerShell.</p>
+<pre>git clone https://github.com/SbruiceS/AgriQL.git
+cd AgriQL
+cargo build --release -p agriql-cli</pre>
+<p>The program is <code>target\release\agriql.exe</code>.</p>
+<h2>Put it on PATH</h2>
+<pre>New-Item -ItemType Directory -Force "$env:LOCALAPPDATA\AgriQL\bin"
+Copy-Item .\target\release\agriql.exe "$env:LOCALAPPDATA\AgriQL\bin\agriql.exe"</pre>
+<p>Add <code>%LOCALAPPDATA%\AgriQL\bin</code> to your user Path, then open a new PowerShell window.</p>
+<h2>Check the installation</h2>
+<pre>agriql version
+agriql init
+agriql doctor</pre>
+<p><code>version</code> should report engine 3.10.1. <code>init</code> creates configuration under <code>%APPDATA%\AgriQL</code> and data under <code>%LOCALAPPDATA%\AgriQL</code>.</p>
+<h2>Next</h2>
+<p><a href="{{ '/docs/getting-started.html' | relative_url }}">Create a database and run a query.</a> To serve other machines, use the <a href="{{ '/docs/install/server.html' | relative_url }}">server guide</a> on a system you administer. A desktop Windows install is for local use.</p>
+<h2>Remove the program</h2>
+<p>Delete <code>agriql.exe</code> and the Path entry. That does not delete <code>%LOCALAPPDATA%\AgriQL</code> or your <code>.aqdb</code> files.</p>

@@ -1,0 +1,42 @@
+---
+layout: docs
+title: AgriQL clients for Python, R, and Arrow
+description: Use the AgriQL Python, R, and Arrow clients. They send queries to AgriQL. They are not separate databases.
+crumb: Clients
+---
+<h1>Python, R, and Arrow</h1>
+<p>The clients send a query to AgriQL and return the rows. Install AgriQL itself before you expect a <code>.aqdb</code> file to open. The Python and R packages call the AgriQL library built with the server or the command.</p>
+<h2>Build the library</h2>
+<p>From the AgriQL source directory:</p>
+<pre>cargo build --release -p agriql-ffi
+sudo install -m 755 target/release/libagriql_ffi.so /usr/local/lib/
+sudo ldconfig</pre>
+<p>On macOS the file is <code>libagriql_ffi.dylib</code>. On Windows it is <code>agriql_ffi.dll</code>. If it is not in a default library directory, set <code>AGRIQL_FFI</code> to the full path.</p>
+<h2>Python</h2>
+<pre>pip install git+https://github.com/SbruiceS/agriql-python.git</pre>
+<pre>import agriql
+
+db = agriql.connect("farm.aqdb")
+rows = db.query("SHOW SCHEMAS;").to_records()</pre>
+<p>A running server is opened by address, not by copying the file:</p>
+<pre>db = agriql.connect("agriql://192.0.2.10:5471/farm")</pre>
+<p><code>to_pandas()</code> and <code>to_polars()</code> work only if those libraries are installed. They are optional.</p>
+<h2>R</h2>
+<pre>install.packages("remotes")
+remotes::install_github("SbruiceS/agriql-r")</pre>
+<pre>library(agriql)
+db <- aqdb_connect("farm.aqdb")
+aqdb_frame(aqdb_query(db, "SHOW SCHEMAS;"))</pre>
+<p>The R package compiles a small connector against <code>libagriql_ffi</code>. The library must be on the linker path when you install the package. If it is elsewhere:</p>
+<pre>AGRIQL_LIBDIR=/usr/local/lib R CMD INSTALL .</pre>
+<h2>Arrow</h2>
+<p>Arrow does not open a database. It turns a text table into an Arrow file.</p>
+<pre>pip install git+https://github.com/SbruiceS/agriql-arrow.git
+agriql-arrow write soil.tsv soil.arrows
+agriql-arrow read soil.arrows</pre>
+<h2>What the clients are not</h2>
+<ul>
+  <li>They are not a second copy of the database.</li>
+  <li>They do not accept Parquet.</li>
+  <li>They do not read a spreadsheet that exists only online.</li>
+</ul>

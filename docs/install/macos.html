@@ -1,0 +1,34 @@
+---
+layout: docs
+title: Install AgriQL on macOS
+description: Install AgriQL 3.10.1 on macOS from source. The build matches Apple silicon or Intel automatically. Homebrew does not carry AgriQL yet.
+crumb: macOS
+---
+<h1>Install AgriQL on macOS</h1>
+<p>This installs the <code>agriql</code> command on the Mac you are using. The build is for that Mac, whether it is Apple silicon or Intel. Homebrew does not carry AgriQL yet.</p>
+<h2>What you need</h2>
+<ul>
+  <li>A current macOS.</li>
+  <li>The Xcode command-line tools.</li>
+  <li>Rust, from <a href="https://rustup.rs">rustup</a>.</li>
+  <li>Git, which the command-line tools provide.</li>
+</ul>
+<pre>xcode-select --install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"</pre>
+<h2>Build</h2>
+<pre>git clone https://github.com/SbruiceS/AgriQL.git
+cd AgriQL
+cargo build --release -p agriql-cli
+sudo install -m 755 target/release/agriql /usr/local/bin/agriql</pre>
+<p>If <code>/usr/local/bin</code> is not writable, copy the binary to a directory already on your Path, such as <code>$HOME/.local/bin</code>.</p>
+<h2>Check the installation</h2>
+<pre>agriql version
+agriql init
+agriql doctor</pre>
+<p>Configuration and data are under <code>~/Library/Application Support/AgriQL</code>.</p>
+<h2>Next</h2>
+<p><a href="{{ '/docs/getting-started.html' | relative_url }}">Create a database and run a query.</a></p>
+<h2>Remove the program</h2>
+<pre>sudo rm /usr/local/bin/agriql</pre>
+<p>That does not delete <code>~/Library/Application Support/AgriQL</code> or your database files.</p>

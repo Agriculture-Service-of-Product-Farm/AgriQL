@@ -1,164 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AgriQL</title>
-  <meta name="description" content="AgriQL is an agriculture-native database language. Measurements keep their units, and the record for a season stays in one file.">
-  <meta property="og:title" content="AgriQL">
-  <meta property="og:description" content="Agriculture-native database language. One file for the season. Units stay with the measurement.">
-  <meta property="og:image" content="https://agriculture-service-of-product-farm.github.io/AgriQL/og.jpg">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="banner">
-    <img src="agriql-logo.png" width="1500" height="750" alt="AgriQL">
-  </header>
-  <nav class="nav">
-    <span class="org">Agricultural Service of Product Farm</span>
-    <a href="#why">Why</a>
-    <a href="#differs">Difference</a>
-    <a href="#do">Use</a>
-    <a href="#query">Query</a>
-    <a href="#clients">Clients</a>
-    <a href="#limits">Limits</a>
-  </nav>
+---
+layout: default
+title: AgriQL — agriculture-native database language
+description: AgriQL stores soil, crop, water, and weather measurements in one file and checks their units. Install it on Windows, macOS, Linux, or a server.
+schema: true
+---
+<section class="wrap hero">
+  <div>
+    <p class="kicker">Agricultural Service of Product Farm</p>
+    <h1>AgriQL</h1>
+    <p class="lede">The database language for agricultural measurements. A season stays in one <code>.aqdb</code> file. A value keeps its unit. Excel, Python, and R receive results. They do not replace the record.</p>
+    <div class="actions">
+      <a class="btn primary" href="{{ '/docs/' | relative_url }}">Read the documentation</a>
+      <a class="btn ghost" href="{{ '/docs/install/linux.html' | relative_url }}">Install on Linux</a>
+    </div>
+  </div>
+  <img class="hero-art" src="{{ '/assets/field.svg' | relative_url }}" alt="A field divided into plots, with one plot marked and a small stack of records.">
+</section>
 
-  <main>
-    <section class="wrap hero">
-      <div>
-        <p class="kicker">Database language 1.0</p>
-        <h1>The record for agricultural measurements.</h1>
-        <p class="lede">Soil, crop, water, and weather stay in one <code>.aqdb</code> file. A value keeps its unit. Analysis tools receive the result. They do not become the record.</p>
-      </div>
-      <img class="hero-art" src="assets/field.svg" alt="A field divided into plots, with one plot marked and a small stack of records.">
-    </section>
+<img class="wide-art wrap" src="{{ '/assets/measures.svg' | relative_url }}" alt="The number 25 shown as millimetres of rain, percent moisture, and kilograms of fertiliser.">
 
-    <img class="wide-art wrap" src="assets/measures.svg" alt="The number 25 shown as millimetres of rain, percent moisture, and kilograms of fertiliser.">
+<section class="band">
+  <div class="wrap">
+    <article>
+      <span class="idx">01</span>
+      <h2>One file for the season</h2>
+      <p>Soil, crop, water, and weather for a farm or a trial stay together. Copy the file. Archive it. Query it later.</p>
+    </article>
+    <article>
+      <span class="idx">02</span>
+      <h2>Units are checked</h2>
+      <p>A length is not added to a mass. Millimetres and metres can be added, because both are length.</p>
+    </article>
+    <article>
+      <span class="idx">03</span>
+      <h2>Analysis stays outside</h2>
+      <p>Export to Excel, or read the same file from Python, R, or Arrow. The database remains the record.</p>
+    </article>
+  </div>
+</section>
 
-    <section class="band" id="why">
-      <div class="wrap">
-        <article>
-          <span class="idx">01</span>
-          <h2>One file for the season</h2>
-          <p>Readings from a farm or a trial stay together. The file can be copied, archived, and opened later without reconstructing a set of workbooks.</p>
-        </article>
-        <article>
-          <span class="idx">02</span>
-          <h2>Units are checked</h2>
-          <p>A length is not added to a mass. Millimetres and metres can be added, because both are length. The check belongs with the data, not in a later script.</p>
-        </article>
-        <article>
-          <span class="idx">03</span>
-          <h2>Analysis stays outside</h2>
-          <p>Excel, Python, and R can take a result. If the notebook is lost, the database file is still the record. An import also remembers the file it came from.</p>
-        </article>
-      </div>
-    </section>
+<section class="wrap section" id="install">
+  <p class="kicker">Install</p>
+  <h2>Choose the system you run.</h2>
+  <p>AgriQL 3.10.1 is built from source. Packages for apt, dnf, Homebrew, and WinGet are not in those public catalogs yet.</p>
+  <div class="platforms">
+    <a class="platform" href="{{ '/docs/install/windows.html' | relative_url }}"><strong>Windows</strong><span>Build the command and place agriql.exe on PATH.</span></a>
+    <a class="platform" href="{{ '/docs/install/macos.html' | relative_url }}"><strong>macOS</strong><span>Apple silicon and Intel. One command for the machine you have.</span></a>
+    <a class="platform" href="{{ '/docs/install/linux.html' | relative_url }}"><strong>Linux</strong><span>Debian, Ubuntu, Fedora, and other current distributions.</span></a>
+    <a class="platform" href="{{ '/docs/install/server.html' | relative_url }}"><strong>Server</strong><span>Run AgriQL as a service on a private network.</span></a>
+  </div>
+</section>
 
-    <section class="wrap section" id="differs">
-      <p class="kicker">Difference</p>
-      <h2>Built for the measurement, not for every application.</h2>
-      <p>A general-purpose database will store farm tables. It treats a column as numbers or text. AgriQL is narrower, on purpose.</p>
-      <div class="split">
-        <article class="panel ours">
-          <h3>AgriQL</h3>
-          <ul>
-            <li>Agricultural measurements: soil, crop, water, weather, sensors.</li>
-            <li>Incompatible units are rejected.</li>
-            <li>One <code>.aqdb</code> file for a farm or a study.</li>
-            <li>CSV, TSV, JSON, and Excel move in and out.</li>
-            <li>Python, R, and Arrow return rows. They are not a second database.</li>
-          </ul>
-        </article>
-        <article class="panel theirs">
-          <h3>A general-purpose database</h3>
-          <ul>
-            <li>Any application, not a field or a season.</li>
-            <li>Numbers are stored. The unit check is left to you.</li>
-            <li>Often a server to administer, or a file with no agricultural meaning.</li>
-            <li>Exchange depends on that product.</li>
-            <li>Analysis tools are attached afterwards, and can drift from the record.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+<section class="wrap section" id="differs">
+  <p class="kicker">Product</p>
+  <h2>Built for the measurement, not for every application.</h2>
+  <div class="split">
+    <article class="panel ours">
+      <h3>AgriQL</h3>
+      <ul>
+        <li>Soil, crop, water, weather, and sensor observations.</li>
+        <li>Incompatible units are rejected.</li>
+        <li>One <code>.aqdb</code> file.</li>
+        <li>CSV, TSV, JSON, and Excel move in and out.</li>
+        <li>Python, R, and Arrow return rows. They are not a second database.</li>
+      </ul>
+    </article>
+    <article class="panel theirs">
+      <h3>A general-purpose database</h3>
+      <ul>
+        <li>Any application, not a field or a season.</li>
+        <li>Numbers are stored. The unit check is left to the application.</li>
+        <li>Often a server, or a file with no agricultural meaning.</li>
+        <li>Exchange depends on that product.</li>
+        <li>Analysis tools can drift away from the record.</li>
+      </ul>
+    </article>
+  </div>
+</section>
 
-    <section class="wrap section" id="do">
-      <p class="kicker">Use</p>
-      <h2>What you can do now.</h2>
-      <div class="steps">
-        <article class="step"><div><h3>Open or create the file</h3><p>One database for a farm, a trial, or a season.</p></div></article>
-        <article class="step"><div><h3>Import the table</h3><p>CSV, TSV, JSON, or Excel. AgriQL records where the rows came from.</p></div></article>
-        <article class="step"><div><h3>Filter and summarise</h3><p>Count, minimum, maximum, average, and standard deviation on that table.</p></div></article>
-        <article class="step"><div><h3>Check the quality</h3><p>Missing values, unusual numbers, and gaps in a time series.</p></div></article>
-        <article class="step"><div><h3>Take the result out</h3><p>Export to CSV, JSON, or Excel. Or read the same file from Python, R, or Arrow.</p></div></article>
-      </div>
-    </section>
+<section class="wrap section">
+  <p class="kicker">Documentation</p>
+  <h2>Start with the task, not the whole manual.</h2>
+  <div class="doc-cards three">
+    <a class="doc-card" href="{{ '/docs/getting-started.html' | relative_url }}"><strong>Getting started</strong><span>Create a database, import a table, and summarise it.</span></a>
+    <a class="doc-card" href="{{ '/docs/clients.html' | relative_url }}"><strong>Python, R, and Arrow</strong><span>Use the clients without copying the database into them.</span></a>
+    <a class="doc-card" href="{{ '/docs/' | relative_url }}"><strong>All documentation</strong><span>Install guides and the present limits of the product.</span></a>
+  </div>
+</section>
 
-    <section class="wrap section" id="query">
-      <p class="kicker">Query</p>
-      <h2>From a soil sheet to a summary.</h2>
-      <p>Import the sheet, ask for mean moisture by plant, then write the table back to Excel. A separate statement reports empty values and unusual numbers.</p>
-      <pre>IMPORT CSV 'soil.csv' INTO agriculture.soil;
-
-SELECT plant_id, AVG(soil_moisture)
-FROM agriculture.soil
-WHERE soil_moisture < 25
-GROUP BY plant_id;
-
-EXPORT XLSX agriculture.soil TO 'soil.xlsx';
-
-PROFILE agriculture.soil;</pre>
-    </section>
-
-    <section class="wrap section" id="clients">
-      <p class="kicker">Clients</p>
-      <h2>The same query, from the tool you already use.</h2>
-      <div class="clients">
-        <article class="client">
-          <h3><a href="https://github.com/SbruiceS/agriql-python">Python</a></h3>
-          <p>Open the file and take the rows. pandas and Polars are optional.</p>
-          <pre>import agriql
-db = agriql.connect("farm.aqdb")
-rows = db.query("SHOW SCHEMAS;").to_records()</pre>
-        </article>
-        <article class="client">
-          <h3><a href="https://github.com/SbruiceS/agriql-r">R</a></h3>
-          <p>The same file, returned as a data frame.</p>
-          <pre>library(agriql)
-db <- aqdb_connect("farm.aqdb")
-aqdb_frame(aqdb_query(db, "SHOW SCHEMAS;"))</pre>
-        </article>
-        <article class="client">
-          <h3><a href="https://github.com/SbruiceS/agriql-arrow">Arrow</a></h3>
-          <p>Move a table into an analysis file. Arrow does not open the database.</p>
-          <pre>agriql-arrow write soil.tsv soil.arrows
-agriql-arrow read soil.arrows</pre>
-        </article>
-      </div>
-    </section>
-
-    <section class="wrap" id="limits">
-      <div class="limits">
-        <p class="kicker">Limits</p>
-        <h2>What not to expect.</h2>
-        <ul>
-          <li>A summary query reads one table. It does not join several tables.</li>
-          <li>Parquet, and a spreadsheet that lives only online, are not accepted.</li>
-          <li>Python, R, and Arrow do not contain the database. They talk to AgriQL.</li>
-          <li>AgriQL is under active development. The behaviour on this page is what you can rely on now.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Sbruice Singh · Agricultural Service of Product Farm</p>
-  </footer>
-</body>
-</html>
+<section class="wrap" id="limits">
+  <div class="limits">
+    <p class="kicker">Limits</p>
+    <h2>What not to expect.</h2>
+    <ul>
+      <li>A summary query reads one table. It does not join several tables.</li>
+      <li>Parquet, and a spreadsheet that lives only online, are not accepted.</li>
+      <li>The clients do not contain the database.</li>
+      <li>AgriQL is under active development. This site describes version 3.10.1.</li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="wrap docs">
+  <aside class="docs-side">
+    <p class="side-label">Documentation</p>
+    <a href="{{ '/docs/' | relative_url }}">Overview</a>
+    <a href="{{ '/docs/getting-started.html' | relative_url }}">Getting started</a>
+    <p class="side-label">Install</p>
+    <a href="{{ '/docs/install/windows.html' | relative_url }}">Windows</a>
+    <a href="{{ '/docs/install/macos.html' | relative_url }}">macOS</a>
+    <a href="{{ '/docs/install/linux.html' | relative_url }}">Linux</a>
+    <a href="{{ '/docs/install/server.html' | relative_url }}">Server</a>
+    <p class="side-label">Use</p>
+    <a href="{{ '/docs/clients.html' | relative_url }}">Python, R, and Arrow</a>
+  </aside>
+  <article class="docs-main">
+    <p class="crumbs"><a href="{{ '/' | relative_url }}">AgriQL</a> · <a href="{{ '/docs/' | relative_url }}">Documentation</a>{% if page.crumb %} · {{ page.crumb }}{% endif %}</p>
+    {{ content }}
+  </article>
+</div>

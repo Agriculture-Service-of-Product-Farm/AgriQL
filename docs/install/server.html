@@ -1,0 +1,48 @@
+---
+layout: docs
+title: Run an AgriQL server
+description: Install AgriQL on a Linux server and run it as a service on a private network, on port 5471.
+crumb: Server
+---
+<h1>Run an AgriQL server</h1>
+<p>A server lets other machines send queries to one AgriQL installation. Install the Linux command first, then run it as a service under its own user. Keep it on a private network. This page does not put AgriQL on the public internet.</p>
+<div class="note">
+  <p>Complete the <a href="{{ '/docs/install/linux.html' | relative_url }}">Linux installation</a> so <code>/usr/local/bin/agriql</code> exists before you create the service.</p>
+</div>
+<h2>1. Create a system user</h2>
+<pre>sudo useradd --system --create-home --home-dir /var/lib/agriql agriql
+sudo -u agriql env AGRIQL_HOME=/var/lib/agriql agriql init</pre>
+<p>Configuration is <code>/var/lib/agriql/config</code>. Data, including <code>.aqdb</code> files, is <code>/var/lib/agriql/data</code>.</p>
+<h2>2. Check the settings</h2>
+<pre>sudo -u agriql env AGRIQL_HOME=/var/lib/agriql agriql server check --host 0.0.0.0 --port 5471</pre>
+<p>The check prints the host and port. It does not stay running.</p>
+<h2>3. Install the service</h2>
+<p>Save this as <code>/etc/systemd/system/agriql.service</code>.</p>
+<pre>[Unit]
+Description=AgriQL database
+After=network.target
+
+[Service]
+User=agriql
+Group=agriql
+Environment=AGRIQL_HOME=/var/lib/agriql
+ExecStart=/usr/local/bin/agriql server start --host 0.0.0.0 --port 5471
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target</pre>
+<pre>sudo systemctl daemon-reload
+sudo systemctl enable --now agriql
+sudo systemctl status agriql</pre>
+<h2>4. Confirm it is listening</h2>
+<pre>sudo -u agriql env AGRIQL_HOME=/var/lib/agriql agriql server status</pre>
+<p>Clients on the same private network use <code>agriql://<server-address>:5471/farm</code> after the database exists. A web browser cannot open that address.</p>
+<h2>5. Create the database</h2>
+<pre>sudo -u agriql env AGRIQL_HOME=/var/lib/agriql agriql database create farm</pre>
+<p>Then follow <a href="{{ '/docs/getting-started.html' | relative_url }}">getting started</a> with <code>AGRIQL_HOME</code> set, or connect from <a href="{{ '/docs/clients.html' | relative_url }}">Python</a>.</p>
+<h2>Stop and restart</h2>
+<pre>sudo systemctl stop agriql
+sudo systemctl restart agriql</pre>
+<p>Stopping the service does not delete <code>/var/lib/agriql</code>.</p>
+<h2>A note on exposure</h2>
+<p>Port 5471 should be reachable only from the network you trust. Do not forward it from a public router as part of this installation. If the server must face a wider network, put it behind the access control your organisation already uses.</p>

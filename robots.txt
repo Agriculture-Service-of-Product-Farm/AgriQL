@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agriculture-service-of-product-farm.github.io/AgriQL/sitemap.xml

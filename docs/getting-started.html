@@ -1,0 +1,33 @@
+---
+layout: docs
+title: Getting started with AgriQL
+description: Create an AgriQL database, import a table, summarise it, and export it to Excel.
+crumb: Getting started
+---
+<h1>Getting started</h1>
+<p>Install AgriQL first. Then create a database for a farm or a trial and run one query. Each <code>agriql query</code> starts fresh, so name the database in the statement.</p>
+<h2>1. Prepare the directories</h2>
+<pre>agriql init
+agriql doctor</pre>
+<p><code>init</code> creates the configuration and data directories for your user. <code>doctor</code> prints whether the installation can see them.</p>
+<h2>2. Create a database</h2>
+<pre>agriql database create farm
+agriql database list</pre>
+<p>This writes <code>farm.aqdb</code> in the data directory.</p>
+<h2>3. Add a schema and a table</h2>
+<pre>agriql query "USE DATABASE farm; CREATE SCHEMA agriculture;"</pre>
+<h2>4. Import, summarise, export</h2>
+<p>Put the CSV in the data directory. The import command refuses a path that leaves that directory.</p>
+<pre>agriql query "USE DATABASE farm; IMPORT CSV 'soil.csv' INTO agriculture.soil;"
+agriql query "USE DATABASE farm; SELECT plant_id, AVG(soil_moisture) FROM agriculture.soil WHERE soil_moisture < 25 GROUP BY plant_id;"
+agriql query "USE DATABASE farm; EXPORT XLSX agriculture.soil TO 'soil.xlsx';"</pre>
+<h2>5. Check the table</h2>
+<pre>agriql query "USE DATABASE farm; PROFILE agriculture.soil;"</pre>
+<p>The profile reports empty values and unusual numbers. A summary reads one table. It does not join two tables.</p>
+<h2>Where the files are</h2>
+<ul>
+  <li>Windows data: <code>%LOCALAPPDATA%\AgriQL</code></li>
+  <li>macOS data: <code>~/Library/Application Support/AgriQL</code></li>
+  <li>Linux data: <code>~/.local/share/agriql</code></li>
+</ul>
+<p>Set <code>AGRIQL_HOME</code> if you want configuration and data under one directory of your choosing. Removing the program does not delete these files.</p>
