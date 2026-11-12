@@ -1,17 +1,30 @@
 ---
 layout: docs
-title: Why AgriQL exists
-description: AgriQL exists so a season of agricultural measurements stays in one file, and so a length is not added to a mass.
-crumb: Why it exists
+title: Why AgriQL is important
+description: AgriQL matters because agricultural numbers that look the same are not the same quantity, and a season of measurements should stay in one file.
+crumb: Why it is important
 ---
-<h1>Why AgriQL exists</h1>
-<p>Agricultural records are full of numbers that look alike and are not alike. Twenty-five can be millimetres of rain, percent soil moisture, or kilograms of fertiliser. A spreadsheet will add them. A general-purpose database will store them and leave the mistake to a later script.</p>
-<h2>The unit stays with the value</h2>
-<p>AgriQL rejects a calculation that mixes incompatible units. Millimetres and kilograms are not added. Millimetres and metres can be added, because both are length. The check belongs with the record, where it is harder to skip.</p>
-<h2>One file for the season</h2>
-<p>Soil readings, crop notes, water, and weather for a farm or a field trial belong together. AgriQL keeps them in one <code>.aqdb</code> file. That file can be copied, archived, and opened again. Removing the program does not delete it.</p>
-<h2>The workbook is not the archive</h2>
-<p>People already work in Excel, Python, and R. AgriQL can take a table from CSV, TSV, JSON, or Excel, and it can write a table back out. An import records the file the rows came from, so a later reader can see that they were not typed in by hand.</p>
-<p>If a notebook is lost, the database file is still the record. The analysis tool is allowed to change. The archive should not have to.</p>
-<h2>What this is not for</h2>
-<p>AgriQL is not a database for every application. Use it when the thing you need to trust is an agricultural measurement. A shop, a ledger of invoices, or a general website does not need it.</p>
+<h1>Why AgriQL is important</h1>
+<p>A farm record is a set of measurements, not a set of bare numbers. Rain, soil moisture, fertiliser, irrigation, and a crop note can sit in the same table and look interchangeable. They are not. AgriQL exists so that mistake is caught in the record, and so a season does not fall apart across files that no longer agree.</p>
+
+<h2>The same numeral is not the same quantity</h2>
+<p>Twenty-five millimetres of rain, twenty-five percent moisture, and twenty-five kilograms of fertiliser are three different statements. A spreadsheet will add them. A general-purpose database will store them as numbers and add them if a later query asks. The person who made the table may have known the difference. The person who opens it next year may not.</p>
+<p>AgriQL keeps the unit with the value. It rejects a length added to a mass. It accepts millimetres added to metres, because both are length. The check is not a note in a cell. It is part of using the file.</p>
+
+<h2>A season should be one file</h2>
+<p>Soil, crop, water, and weather for one farm or one field trial belong together. AgriQL keeps them in a single <code>.aqdb</code> file. That file can be copied, handed to someone else, and opened again. There is not a folder of versions whose names say “final” and “final-2”.</p>
+<p>Removing the program does not delete the file. The record outlives the particular machine it was written on.</p>
+
+<h2>You can see where the rows came from</h2>
+<p>An import from CSV, TSV, JSON, or Excel records the source file. A later reader can see that the rows were brought in, not typed as if they had no origin. That matters when a moisture reading is questioned: the table and the file it came from are still connected.</p>
+
+<h2>Trust the figure before you act on it</h2>
+<p>An average hides empty rows and odd values. AgriQL can profile a table and report those. It can also count gaps along a time column, which is the difference between a sensor that reported all season and one that went quiet for a week. A gap is not a reading of zero. Treating it as one changes the average.</p>
+<p>A summary in this release reads one table. It can count, and it can take a minimum, a maximum, an average, and a standard deviation, with a filter and a grouping. It does not join several tables. That limit is stated because a joined figure that the software cannot produce should not be assumed.</p>
+
+<h2>The tools you already use stay outside the record</h2>
+<p>Excel, Python, and R are how many people study a season. AgriQL can write a table back out to CSV, TSV, JSON, or Excel, and the Python, R, and Arrow clients can take rows. They are not a second copy of the database. If the notebook is lost, the <code>.aqdb</code> file is still the record. The analysis tool is allowed to change. The archive should not have to.</p>
+
+<h2>Where it is the wrong tool</h2>
+<p>AgriQL is not important for a shop, an invoice ledger, or a general website. It does not read Parquet, and it does not read a spreadsheet that exists only online. Use it when the thing you need to trust is an agricultural measurement, and when mixing those measurements up would matter.</p>
+<p><a href="{{ '/docs/compare.html' | relative_url }}">How this differs from a spreadsheet and from a general-purpose database.</a></p>
