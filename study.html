@@ -1,0 +1,61 @@
+---
+layout: default
+title: A study of growth — AgriQL
+description: An illustrated study of a growing season. Rain, moisture, and fertiliser stay separate measurements. AgriQL does not simulate the plant.
+---
+<section class="study">
+  <div class="wrap study-grid">
+    <figure class="plot">
+      <svg viewBox="0 0 420 640" role="img" aria-label="An illustration of a plant drawn over a season. It is not a measurement.">
+        <rect width="420" height="640" rx="28" fill="#10241c"/>
+        <g stroke="#e7f0df" stroke-opacity=".14" stroke-width="1">
+          <path d="M70 96h280M70 176h280M70 256h280M70 336h280M70 416h280"/>
+        </g>
+        <path d="M78 470h264" stroke="#8fbf78" stroke-opacity=".45" stroke-width="1.4"/>
+        <path d="M90 488c36 12 70-10 110 2s78 14 132-8" stroke="#3d9a45" stroke-opacity=".55" stroke-width="1.2" fill="none"/>
+        <g class="staff" stroke="#e7f0df" stroke-opacity=".35" stroke-width="1">
+          <path d="M96 120v330"/>
+          <path d="M90 120h12M90 202h12M90 285h12M90 368h12M90 450h12"/>
+        </g>
+        <g class="scan">
+          <path d="M118 450h170" stroke="#d7efc8" stroke-width="1.2"/>
+        </g>
+        <path class="stem" d="M196 452 C194 390 208 340 194 286 C182 240 206 196 196 148" stroke="#b7e39a" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path class="leaf l1" d="M196 360c-46-8-78 10-92 34 28 6 62 2 92-18z" fill="#3d9a45"/>
+        <path class="leaf l2" d="M196 300c48-6 82 14 96 36-30 4-64 0-96-20z" fill="#2f7a34"/>
+        <path class="leaf l3" d="M194 236c-42-10-70 6-84 28 26 6 56 2 84-14z" fill="#8fbf78"/>
+        <path class="leaf l4" d="M198 178c36-18 62-8 74 12-28 8-50 6-74-4z" fill="#d7efc8"/>
+        <circle class="bud" cx="196" cy="142" r="5" fill="#f4f0e6"/>
+      </svg>
+      <figcaption>Illustration of a study. Not a live plant, and not a reading.</figcaption>
+    </figure>
+    <div class="study-copy">
+      <p class="kicker">Engineering a record of growth</p>
+      <h1>The plant moves. The measurements do not collapse.</h1>
+      <p class="lede">A season of study is a sequence of observations. Rain, soil moisture, and fertiliser can be written beside the same plant. They are not one number, and they are not added.</p>
+      <ol class="reads">
+        <li><strong>25 mm</strong><span>rain, through the season</span></li>
+        <li><strong>25 %</strong><span>soil moisture, at a reading</span></li>
+        <li><strong>25 kg</strong><span>fertiliser, applied once</span></li>
+      </ol>
+      <p class="refused" aria-label="The sum of those three values is refused"><s>25 + 25 + 25</s> <span>refused</span></p>
+      <p>AgriQL does not grow the plant and does not predict a yield. It keeps the study from treating three quantities as one. Millimetres may be added to metres. Millimetres may not be added to kilograms.</p>
+      <div class="actions">
+        <a class="btn primary" href="{{ '/docs/importance.html' | relative_url }}">Why that refusal matters</a>
+        <a class="btn ghost" href="{{ '/docs/query.html' | relative_url }}">What a query can ask</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="wrap study-note">
+  <div>
+    <p class="kicker">What the drawing is</p>
+    <h2>Movement, then a record.</h2>
+    <p>The stem is drawn once, from the soil upward. The line that travels with it is a mark of the drawing, not a sensor. The three lines beside it are the same example used elsewhere on this site: an explanation, not a field result.</p>
+  </div>
+  <div>
+    <p class="kicker">What a study still needs</p>
+    <h2>One file, checked.</h2>
+    <p>The observations of a season belong in one <code>.aqdb</code> file. A profile can show empty values. A time column can be checked for gaps. A gap is not a reading of zero. This release still reads one table at a time, and it still does not join tables.</p>
+  </div>
+</section>
