@@ -1,0 +1,17 @@
+---
+layout: docs
+title: Why AgriQL exists
+description: AgriQL exists so a season of agricultural measurements stays in one file, and so a length is not added to a mass.
+crumb: Why it exists
+---
+<h1>Why AgriQL exists</h1>
+<p>Agricultural records are full of numbers that look alike and are not alike. Twenty-five can be millimetres of rain, percent soil moisture, or kilograms of fertiliser. A spreadsheet will add them. A general-purpose database will store them and leave the mistake to a later script.</p>
+<h2>The unit stays with the value</h2>
+<p>AgriQL rejects a calculation that mixes incompatible units. Millimetres and kilograms are not added. Millimetres and metres can be added, because both are length. The check belongs with the record, where it is harder to skip.</p>
+<h2>One file for the season</h2>
+<p>Soil readings, crop notes, water, and weather for a farm or a field trial belong together. AgriQL keeps them in one <code>.aqdb</code> file. That file can be copied, archived, and opened again. Removing the program does not delete it.</p>
+<h2>The workbook is not the archive</h2>
+<p>People already work in Excel, Python, and R. AgriQL can take a table from CSV, TSV, JSON, or Excel, and it can write a table back out. An import records the file the rows came from, so a later reader can see that they were not typed in by hand.</p>
+<p>If a notebook is lost, the database file is still the record. The analysis tool is allowed to change. The archive should not have to.</p>
+<h2>What this is not for</h2>
+<p>AgriQL is not a database for every application. Use it when the thing you need to trust is an agricultural measurement. A shop, a ledger of invoices, or a general website does not need it.</p>

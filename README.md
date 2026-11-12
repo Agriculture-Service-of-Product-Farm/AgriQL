@@ -1,5 +1,5 @@
 # AgriQL
 
-Public site for AgriQL, an agriculture-native database language.
+Public site for AgriQL, published for Agricultural Service of Product Farm.
 
-The site is published from this repository. It does not contain the database.
+This repository is the website only. It does not contain the database, and it does not describe how AgriQL is built.

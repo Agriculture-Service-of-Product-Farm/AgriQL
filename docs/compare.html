@@ -1,0 +1,26 @@
+---
+layout: docs
+title: How AgriQL differs from other databases
+description: How AgriQL differs from a spreadsheet and from a general-purpose database. Units are checked. A summary reads one table. Joins are not in this release.
+crumb: Compared
+---
+<h1>How AgriQL differs</h1>
+<p>A spreadsheet and a general-purpose database will both hold farm tables. AgriQL is narrower. The differences below are what version 3.10.1 actually does. They are not a claim that AgriQL is faster, or that it replaces every other system.</p>
+<table class="ledger">
+  <thead>
+    <tr><th></th><th>Spreadsheet</th><th>General-purpose database</th><th>AgriQL 3.10.1</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>What a number is</td><td>A number or text</td><td>A number or text</td><td>A measurement. Incompatible units are rejected.</td></tr>
+    <tr><td>Millimetres plus kilograms</td><td>Allowed</td><td>Stored, and added if you ask</td><td>Rejected. They are not the same kind of quantity.</td></tr>
+    <tr><td>Millimetres plus metres</td><td>You convert them</td><td>You convert them</td><td>Accepted. Both are length.</td></tr>
+    <tr><td>A season of records</td><td>Often several workbooks</td><td>A server, or a file with no agricultural meaning</td><td>One <code>.aqdb</code> file.</td></tr>
+    <tr><td>A summary</td><td>Formulas across cells</td><td>SQL, including joins of many tables</td><td>Filter and aggregate one table: count, minimum, maximum, average, standard deviation.</td></tr>
+    <tr><td>Joining tables</td><td>Manual</td><td>Yes</td><td>Not in this release.</td></tr>
+    <tr><td>Excel, CSV, JSON</td><td>Excel is the file</td><td>Depends on the product</td><td>CSV, TSV, JSON, and Excel can be imported and exported.</td></tr>
+    <tr><td>Parquet, or a sheet that lives only online</td><td>No</td><td>Sometimes</td><td>Not accepted.</td></tr>
+    <tr><td>Empty values and odd numbers</td><td>You look</td><td>You write the check</td><td><code>PROFILE</code> reports them. <code>SERIES … ON</code> counts gaps in a time column.</td></tr>
+    <tr><td>Python and R</td><td>They read the sheet</td><td>They use a driver</td><td>They return rows from AgriQL. They are not a second database.</td></tr>
+  </tbody>
+</table>
+<p>Choose a general-purpose database when you need joins, many applications, or a format AgriQL does not read. Choose AgriQL when the risk is mixing up agricultural measurements, or losing the season across files that no longer agree.</p>

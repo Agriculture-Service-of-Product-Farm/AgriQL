@@ -1,0 +1,26 @@
+---
+layout: docs
+title: AgriQL queries
+description: The AgriQL statements that work in version 3.10.1. Import a table, summarise it, check it, and export it.
+crumb: Queries
+---
+<h1>What you can ask</h1>
+<p>These statements are part of AgriQL 3.10.1. A summary reads one table. Names below are examples. Your table and column names are the ones you imported.</p>
+<h2>Bring a file in</h2>
+<pre>IMPORT CSV 'soil.csv' INTO agriculture.soil;</pre>
+<p>The same form accepts <code>TSV</code>, <code>JSON</code>, and <code>XLSX</code>. The import records the source file. A Parquet file, or a spreadsheet that exists only at a web address, is refused.</p>
+<h2>Summarise one table</h2>
+<pre>SELECT plant_id, AVG(soil_moisture)
+FROM agriculture.soil
+WHERE soil_moisture < 25
+GROUP BY plant_id;</pre>
+<p><code>COUNT</code>, <code>MIN</code>, <code>MAX</code>, and <code>STDDEV</code> are the other aggregates. There is no join of two tables in this release.</p>
+<h2>Look at the quality</h2>
+<pre>PROFILE agriculture.soil;
+SERIES agriculture.soil ON observed_at;</pre>
+<p><code>PROFILE</code> reports empty values and unusual numbers. <code>SERIES … ON</code> counts gaps along the column you name.</p>
+<h2>Write it back out</h2>
+<pre>EXPORT XLSX agriculture.soil TO 'soil.xlsx';</pre>
+<p><code>CSV</code>, <code>TSV</code>, and <code>JSON</code> can be written the same way.</p>
+<p>From the command, name the database in the same request, because each request starts fresh:</p>
+<pre>agriql query "USE DATABASE farm; PROFILE agriculture.soil;"</pre>

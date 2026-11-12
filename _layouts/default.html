@@ -65,12 +65,11 @@
       <img src="{{ '/agriql-logo.png' | relative_url }}" alt="AgriQL — agriculture-native database language" width="1500" height="1000">
     </a>
     <nav class="site-nav" aria-label="Primary">
-      <a href="{{ '/' | relative_url }}">Product</a>
-      <a href="{{ '/docs/' | relative_url }}">Documentation</a>
-      <a href="{{ '/docs/install/linux.html' | relative_url }}">Linux</a>
-      <a href="{{ '/docs/install/windows.html' | relative_url }}">Windows</a>
-      <a href="{{ '/docs/install/macos.html' | relative_url }}">macOS</a>
-      <a href="{{ '/docs/install/server.html' | relative_url }}">Server</a>
+      <a href="{{ '/' | relative_url }}">AgriQL</a>
+      <a href="{{ '/docs/importance.html' | relative_url }}">Why it exists</a>
+      <a href="{{ '/docs/compare.html' | relative_url }}">Compared</a>
+      <a href="{{ '/docs/query.html' | relative_url }}">Queries</a>
+      <a href="{{ '/docs/' | relative_url }}">Install</a>
     </nav>
   </header>
   {{ content }}
@@ -89,8 +88,9 @@
       </div>
       <div>
         <strong>Documentation</strong>
-        <p><a href="{{ '/docs/' | relative_url }}">Overview</a></p>
-        <p><a href="{{ '/docs/getting-started.html' | relative_url }}">Getting started</a></p>
+        <p><a href="{{ '/docs/importance.html' | relative_url }}">Why AgriQL exists</a></p>
+        <p><a href="{{ '/docs/compare.html' | relative_url }}">Compared with other databases</a></p>
+        <p><a href="{{ '/docs/query.html' | relative_url }}">Queries</a></p>
         <p><a href="{{ '/docs/clients.html' | relative_url }}">Python, R, and Arrow</a></p>
       </div>
     </div>
@@ -98,8 +98,5 @@
       <p>Sbruice Singh · Agricultural Service of Product Farm</p>
     </div>
   </footer>
-  {% if page.motion %}
-  <script src="{{ '/assets/site-motion.js' | relative_url }}" defer></script>
-  {% endif %}
 </body>
 </html>
