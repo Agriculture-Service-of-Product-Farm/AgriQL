@@ -42,7 +42,11 @@ schema: true
 <section class="wrap explain">
   <p class="kicker">The same numeral</p>
   <h2>Three quantities. Not one number.</h2>
-  <img class="unit-art" src="{{ '/assets/units.svg' | relative_url }}" alt="The numeral 25 shown as millimetres of rain, percent moisture, and kilograms of fertiliser.">
+  <div class="quantities" aria-label="The numeral 25 as three different quantities">
+    <article><strong>25 mm</strong><span>rain</span></article>
+    <article><strong>25 %</strong><span>moisture</span></article>
+    <article><strong>25 kg</strong><span>fertiliser</span></article>
+  </div>
   <p>This is an explanation, not a live reading. A spreadsheet will add those values. AgriQL will not.</p>
 </section>
 
