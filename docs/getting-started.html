@@ -17,7 +17,7 @@ agriql database list</pre>
 <h2>3. Add a schema and a table</h2>
 <pre>agriql query "USE DATABASE farm; CREATE SCHEMA agriculture;"</pre>
 <h2>4. Import, summarise, export</h2>
-<p>Put the CSV in the data directory. The import command refuses a path that leaves that directory.</p>
+<p>Put the CSV in the data directory. The import creates <code>agriculture.soil</code> from that file, and it records the file the rows came from. A path that leaves the data directory is refused.</p>
 <pre>agriql query "USE DATABASE farm; IMPORT CSV 'soil.csv' INTO agriculture.soil;"
 agriql query "USE DATABASE farm; SELECT plant_id, AVG(soil_moisture) FROM agriculture.soil WHERE soil_moisture < 25 GROUP BY plant_id;"
 agriql query "USE DATABASE farm; EXPORT XLSX agriculture.soil TO 'soil.xlsx';"</pre>

@@ -55,7 +55,9 @@ schema: true
     <a class="card" href="{{ '/docs/importance.html' | relative_url }}"><em>01</em><strong>Why it is important</strong><span>A measurement is not a bare number, and a season should be one file.</span></a>
     <a class="card" href="{{ '/docs/compare.html' | relative_url }}"><em>02</em><strong>Compared</strong><span>What a spreadsheet and a general-purpose database allow, and what AgriQL refuses.</span></a>
     <a class="card" href="{{ '/docs/query.html' | relative_url }}"><em>03</em><strong>Queries</strong><span>Import, summarise one table, check it, and write it back out.</span></a>
-    <a class="card" href="{{ '/docs/' | relative_url }}"><em>04</em><strong>Install</strong><span>Windows, macOS, Linux, and a private server. From source. Version 3.10.1.</span></a>
+    <a class="card" href="{{ '/docs/getting-started.html' | relative_url }}"><em>04</em><strong>First database</strong><span>Create a file, import a table, and run one query.</span></a>
+    <a class="card" href="{{ '/docs/clients.html' | relative_url }}"><em>05</em><strong>Python, R, and Arrow</strong><span>They take rows from AgriQL. They are not a second database.</span></a>
+    <a class="card" href="{{ '/docs/limits.html' | relative_url }}"><em>06</em><strong>This release</strong><span>No joins, no Parquet, and no package in apt, Homebrew, or WinGet.</span></a>
   </div>
 </section>
 
@@ -76,6 +78,10 @@ schema: true
   <details>
     <summary>Where can AgriQL be installed?</summary>
     <p>On Windows, macOS, and Linux, from source. It can also run as a service on a private network. Packages for apt, dnf, Homebrew, and WinGet are not published.</p>
+  </details>
+  <details>
+    <summary>What does this release not do?</summary>
+    <p>It does not join several tables. It does not read Parquet, and it does not read a spreadsheet that exists only online. The full list is on the <a href="{{ '/docs/limits.html' | relative_url }}">limits page</a>.</p>
   </details>
 </section>
 <script type="application/ld+json">
@@ -113,6 +119,14 @@ schema: true
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "On Windows, macOS, and Linux, from source. It can also run as a service on a private network. Packages for apt, dnf, Homebrew, and WinGet are not published."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does AgriQL 3.10.1 not do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It does not join several tables. It does not read Parquet, and it does not read a spreadsheet that exists only online."
       }
     }
   ]

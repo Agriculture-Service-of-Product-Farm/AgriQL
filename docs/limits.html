@@ -1,0 +1,33 @@
+---
+layout: docs
+title: What AgriQL 3.10.1 does not do
+description: The limits of AgriQL 3.10.1. No joins, no Parquet, no online-only spreadsheet, and no package in apt, dnf, Homebrew, or WinGet.
+crumb: Limits
+---
+<h1>What this release does not do</h1>
+<p>AgriQL 3.10.1 is a database language for agricultural measurements. The list below is the boundary of this release. A later release may move it. This page will not pretend that it already has.</p>
+<h2>Queries</h2>
+<ul>
+  <li>A summary reads one table. It does not join two tables.</li>
+  <li>The aggregates are count, minimum, maximum, average, and standard deviation.</li>
+  <li>Each <code>agriql query</code> starts fresh. Name the database in the statement.</li>
+</ul>
+<h2>Files</h2>
+<ul>
+  <li>CSV, TSV, JSON, and Excel can be imported and exported.</li>
+  <li>Parquet is refused.</li>
+  <li>A spreadsheet that exists only at a web address is refused.</li>
+  <li>An import path that leaves the data directory is refused.</li>
+</ul>
+<h2>Install</h2>
+<ul>
+  <li>Windows, macOS, and Linux are installed from source.</li>
+  <li><code>apt</code>, <code>dnf</code>, Homebrew, and WinGet do not publish an AgriQL package.</li>
+  <li>A server listens on a private network, on port 5471. A web browser cannot open <code>agriql://</code>.</li>
+</ul>
+<h2>Clients</h2>
+<ul>
+  <li>Python, R, and Arrow send a query or convert a text table. They are not a second database.</li>
+  <li>Pandas and Polars are optional. The Python client does not require them.</li>
+</ul>
+<p>What the release does do is on <a href="{{ '/docs/query.html' | relative_url }}">Queries</a> and <a href="{{ '/docs/getting-started.html' | relative_url }}">Getting started</a>.</p>

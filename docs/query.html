@@ -6,6 +6,11 @@ crumb: Queries
 ---
 <h1>What you can ask</h1>
 <p>These statements are part of AgriQL 3.10.1. A summary reads one table. Names below are examples. Your table and column names are the ones you imported.</p>
+<h2>Name the database</h2>
+<pre>USE DATABASE farm;
+CREATE SCHEMA agriculture;
+SHOW SCHEMAS;</pre>
+<p>Each <code>agriql query</code> starts fresh, so <code>USE DATABASE</code> belongs in the same request as the statement that follows it.</p>
 <h2>Bring a file in</h2>
 <pre>IMPORT CSV 'soil.csv' INTO agriculture.soil;</pre>
 <p>The same form accepts <code>TSV</code>, <code>JSON</code>, and <code>XLSX</code>. The import records the source file. A Parquet file, or a spreadsheet that exists only at a web address, is refused.</p>
