@@ -24,7 +24,7 @@
     var pct = Math.round(t * 100);
     if (document.activeElement !== range) range.value = String(pct);
     range.setAttribute("aria-valuenow", String(pct));
-    label.textContent = stageName(t) + " · drawing";
+    label.textContent = stageName(t) + " · illustration";
     for (var i = 0; i < reads.length; i++) {
       reads[i].classList.toggle("lit", t >= Number(reads[i].getAttribute("data-at")));
     }
