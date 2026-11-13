@@ -1,0 +1,54 @@
+---
+layout: default
+title: How AgriQL 3.10.1 is arranged
+description: A map of AgriQL 3.10.1, the agricultural database language. Sources, ingestion, schema, unit checks, queries, the .aqdb file, and the Python, R, and Arrow clients. Joins and yield forecasts are not in this release.
+---
+<section class="wrap stage">
+  <p class="kicker">Public path of version 3.10.1</p>
+  <h1>What this release connects.</h1>
+  <p class="lede">This is a map of the agricultural data path you can use today. Solid nodes are in AgriQL 3.10.1. Dashed nodes are not. The drawing does not show how the software is built, and it does not run a query.</p>
+</section>
+<section class="wrap topo">
+  <div class="topo-stage">
+    <div class="plate topo-plate" id="topo-plate">
+      <canvas id="topo" aria-label="Map of AgriQL 3.10.1. Choose a node for a description."></canvas>
+      <div class="zoom" role="group" aria-label="Zoom">
+        <button type="button" id="topo-in" aria-label="Zoom in">+</button>
+        <button type="button" id="topo-out" aria-label="Zoom out">−</button>
+        <button type="button" id="topo-fit">Fit</button>
+      </div>
+    </div>
+    <aside class="topo-panel" aria-live="polite">
+      <p class="pill in" id="topo-badge">In 3.10.1</p>
+      <h2 id="topo-title">.aqdb file</h2>
+      <p id="topo-body">A season of measurements stays in one file.</p>
+      <p class="fine">Drag the map. Select a node. On a small screen, use the list below.</p>
+    </aside>
+  </div>
+  <div class="node-list" role="group" aria-label="Nodes">
+    <button type="button" data-node="sources">Sources</button>
+    <button type="button" data-node="ingest">Ingestion</button>
+    <button type="button" data-node="schema">Schema</button>
+    <button type="button" data-node="units">Units</button>
+    <button type="button" data-node="query">Query</button>
+    <button type="button" data-node="store" aria-pressed="true">.aqdb</button>
+    <button type="button" data-node="python">Python</button>
+    <button type="button" data-node="r">R</button>
+    <button type="button" data-node="arrow">Arrow</button>
+    <button type="button" data-node="joins">Joins, not included</button>
+    <button type="button" data-node="yield">Yield, not included</button>
+  </div>
+  <p class="fine">Arrow converts a text table. It does not open the <code>.aqdb</code> file. A moving dot marks a connection that exists. A dashed node is absent from this release.</p>
+  <p><a href="{{ '/docs/query.html' | relative_url }}">Read the statements.</a> <a href="{{ '/docs/limits.html' | relative_url }}">Read the limits.</a> <a href="{{ '/lab.html' | relative_url }}">Open the statement reader.</a></p>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "AgriQL", "item": "https://agriculture-service-of-product-farm.github.io/AgriQL/" },
+    { "@type": "ListItem", "position": 2, "name": "How this release is arranged", "item": "https://agriculture-service-of-product-farm.github.io/AgriQL/topology.html" }
+  ]
+}
+</script>
+<script src="{{ '/assets/topology.js' | relative_url }}" defer></script>

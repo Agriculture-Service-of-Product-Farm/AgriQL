@@ -70,6 +70,8 @@
       <a href="{{ '/docs/compare.html' | relative_url }}">Compared</a>
       <a href="{{ '/docs/query.html' | relative_url }}">Queries</a>
       <a href="{{ '/study.html' | relative_url }}">Quantities</a>
+      <a href="{{ '/topology.html' | relative_url }}">Map</a>
+      <a href="{{ '/lab.html' | relative_url }}">Reader</a>
       <a href="{{ '/docs/' | relative_url }}">Install</a>
     </nav>
   </header>
@@ -90,6 +92,8 @@
       <div>
         <strong>Documentation</strong>
         <p><a href="{{ '/study.html' | relative_url }}">AgriQL does not predict yield</a></p>
+        <p><a href="{{ '/topology.html' | relative_url }}">How this release is arranged</a></p>
+        <p><a href="{{ '/lab.html' | relative_url }}">Read a statement</a></p>
         <p><a href="{{ '/docs/importance.html' | relative_url }}">Why AgriQL is important</a></p>
         <p><a href="{{ '/docs/compare.html' | relative_url }}">Compared with other databases</a></p>
         <p><a href="{{ '/docs/query.html' | relative_url }}">Queries</a></p>
@@ -101,5 +105,13 @@
       <p>Sbruice Singh · Agricultural Service of Product Farm</p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var path = location.pathname.replace(/\/index\.html$/, "/");
+      document.querySelectorAll(".site-nav a, .docs-side a").forEach(function (a) {
+        if (a.pathname.replace(/\/index\.html$/, "/") === path) a.setAttribute("aria-current", "page");
+      });
+    })();
+  </script>
 </body>
 </html>

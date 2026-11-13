@@ -1,0 +1,60 @@
+---
+layout: default
+title: Read an AgriQL statement
+description: Example AgriQL statements for agricultural data. Import, summarise one table, check units, and export. This page explains the statement. It does not run a database.
+---
+<section class="wrap stage">
+  <p class="kicker">A reader, not a database</p>
+  <h1>Read a statement. Nothing is executed.</h1>
+  <p class="lede">These are AgriQL 3.10.1 statements for soil and farm tables. You can edit the text and copy it. This page does not connect to an <code>.aqdb</code> file, and a table below is an explanation, not a result.</p>
+</section>
+<section class="wrap lab">
+  <div class="example-row" role="group" aria-label="Examples">
+    <button type="button" data-example="import">Import</button>
+    <button type="button" data-example="summary" aria-pressed="true">One table</button>
+    <button type="button" data-example="profile">Profile</button>
+    <button type="button" data-example="series">Time gaps</button>
+    <button type="button" data-example="export">Export</button>
+    <button type="button" data-example="units">Units</button>
+  </div>
+  <div class="lab-grid">
+    <div>
+      <div class="editor">
+        <pre id="lab-paint" aria-hidden="true"></pre>
+        <label class="sr" for="lab-code">AgriQL statement</label>
+        <textarea id="lab-code" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn primary" id="lab-copy">Copy statement</button>
+      </div>
+      <p class="fine" id="lab-copied" hidden></p>
+    </div>
+    <div class="lab-notes">
+      <h2>What the statement means</h2>
+      <p id="lab-explain"></p>
+      <h2>Preview</h2>
+      <p id="lab-preview" class="note"></p>
+      <table class="ledger unit-rule">
+        <caption>Unit rule used on this site. Not a query result.</caption>
+        <thead><tr><th>Expression</th><th>In AgriQL 3.10.1</th></tr></thead>
+        <tbody>
+          <tr><td>25 mm + 25 kg</td><td>Refused. Not the same kind of quantity.</td></tr>
+          <tr><td>25 mm and 2 m</td><td>Both are length.</td></tr>
+          <tr><td>A predicted yield</td><td>Not something AgriQL calculates.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p><a href="{{ '/docs/query.html' | relative_url }}">The same statements, in the documentation.</a> <a href="{{ '/docs/getting-started.html' | relative_url }}">Run them only after you install AgriQL.</a></p>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "AgriQL", "item": "https://agriculture-service-of-product-farm.github.io/AgriQL/" },
+    { "@type": "ListItem", "position": 2, "name": "Read a statement", "item": "https://agriculture-service-of-product-farm.github.io/AgriQL/lab.html" }
+  ]
+}
+</script>
+<script src="{{ '/assets/lab.js' | relative_url }}" defer></script>
